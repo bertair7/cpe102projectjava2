@@ -1,5 +1,8 @@
 import processing.core.PImage;
 import java.util.List;
+import java.util.LinkedList;
+import java.util.ArrayList;
+import java.lang.Math;
 import static java.lang.Math.abs;
 
 public abstract class MobileAnimatedActor
@@ -13,6 +16,7 @@ public abstract class MobileAnimatedActor
 
    protected Point nextPosition(WorldModel world, Point dest_pt)
    {
+      /*
       int horiz = Integer.signum(dest_pt.x - getPosition().x);
       Point new_pt = new Point(getPosition().x + horiz, getPosition().y);
 
@@ -26,8 +30,17 @@ public abstract class MobileAnimatedActor
             new_pt = getPosition();
          }
       }
+      */
+      Point this_pt = new Point(getPosition().x, getPosition().y);
+      AStar Next = new AStar();
+      Point new_pt = Next.AStar(this_pt, dest_pt, world);
 
-      return new_pt;
+      if(new_pt != null)
+      { 
+         return new_pt;
+      }
+      
+      return dest_pt;
    }
 
    protected static boolean adjacent(Point p1, Point p2)

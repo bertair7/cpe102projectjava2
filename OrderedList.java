@@ -68,6 +68,18 @@ public class OrderedList<T>
       return list.size();
    }
 
+   public boolean contains(T item)
+   {
+      for(ListItem<T> lItem : list)
+      {
+         if(lItem.item.equals(item))
+         {
+            return true;
+         }
+      }
+      return false;
+   }
+
    public static class ListItem<T>
    {
       public final T item;
