@@ -98,6 +98,22 @@ public class Main extends PApplet
       }
    }
 
+   public final static String DRAGON_KEY = "dragon";
+   public final static int DRAGON_RATE = 3;
+   public final static int DRAGON_ANIMATION = 5;
+   public final static int DRAGON_RESOURCE_LIMIT = 3;
+
+   public void mousePressed()
+   {
+      int x = mouseX;
+      int y = mouseY;
+      long time = System.currentTimeMillis();
+      Actor dragon = new Dragon(DRAGON_KEY, new Point(x, y), DRAGON_RATE,  
+         DRAGON_ANIMATION, DRAGON_RESOURCE_LIMIT, imageStore.get(DRAGON_KEY));
+      world.addEntity(dragon);
+      dragon.schedule(world, DRAGON_RATE + time, imageStore);
+   }
+
    private static Background createDefaultBackground(ImageStore imageStore)
    {
       List<PImage> bgndImgs = imageStore.get(DEFAULT_IMAGE_NAME);
@@ -115,7 +131,6 @@ public class Main extends PApplet
       img.updatePixels();
       return img;
    }
-
 
    private static void loadImages(String filename, ImageStore imageStore,
       PApplet screen)

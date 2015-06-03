@@ -28,3 +28,11 @@ quake images/quake6.bmp 255 255 255 0
 rocks images/rock.bmp
 vein images/vein.bmp
 background_default images/none.bmp
+dragon images/wyvern1.bmp
+dragon images/wyvern2.bmp
+dragon images/wyvern3.bmp
+dragon images/wyvern4.bmp
+dragon images/wyvern5.bmp
+dragon images/wyvern6.bmp
+dragon images/wyvern7.bmp
+dragon images/wyvern8.bmp
