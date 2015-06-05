@@ -11,13 +11,6 @@ public class Dragon
          0, Miner.class, imgs);
    }
 
-   public String toString()
-   {
-      return String.format("dragon %s %d %d %d %d %d", getName(),
-         getPosition().x, getPosition().y, getResourceLimit(),
-         getRate(), getAnimationRate());
-   }
-
    protected Miner transform(WorldModel world)
    {
       if (getResourceCount() < getResourceLimit())

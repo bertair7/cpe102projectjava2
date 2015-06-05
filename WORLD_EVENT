@@ -1,0 +1,7 @@
+1) World event triggered by mouse click
+2) When mouse is click on screen
+   a) spawns a dragon at the point that kills miners
+   b) makes an area around the new dragon ice obstacles
+3) Miners will be removed by dragon when adjacent to the dragon
+4) The Dragon is an extension of miner that kills miners when adjacent to them, then disappers after eating 3
+

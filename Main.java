@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.File;
+import java.awt.event.*;
 
 public class Main extends PApplet
 {
@@ -99,19 +100,20 @@ public class Main extends PApplet
    }
 
    public final static String DRAGON_KEY = "dragon";
-   public final static int DRAGON_RATE = 3;
+   public final static int DRAGON_RATE = 2;
    public final static int DRAGON_ANIMATION = 5;
    public final static int DRAGON_RESOURCE_LIMIT = 3;
 
-   public void mousePressed()
+   public void mousePressed(MouseEvent e)
    {
-      int x = mouseX;
-      int y = mouseY;
+      int x = e.getX();
+      int y = e.getY();
       long time = System.currentTimeMillis();
       Actor dragon = new Dragon(DRAGON_KEY, new Point(x, y), DRAGON_RATE,  
          DRAGON_ANIMATION, DRAGON_RESOURCE_LIMIT, imageStore.get(DRAGON_KEY));
       world.addEntity(dragon);
       dragon.schedule(world, DRAGON_RATE + time, imageStore);
+      redraw();
    }
 
    private static Background createDefaultBackground(ImageStore imageStore)
