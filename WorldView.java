@@ -8,6 +8,7 @@ public class WorldView
    private int tileWidth;
    private int tileHeight;
    private Viewport viewport;
+   private Point origin;
 
    public WorldView(int numCols, int numRows, PApplet screen, WorldModel world,
       int tileWidth, int tileHeight)
@@ -17,6 +18,7 @@ public class WorldView
       this.tileWidth = tileWidth;
       this.tileHeight = tileHeight;
       this.viewport = new Viewport(numRows, numCols);
+      this.origin = new Point(0, 0);
    }
 
    public void drawViewport()
@@ -59,6 +61,12 @@ public class WorldView
       int new_y = clamp(viewport.getRow() + dy, 0,
          world.getNumRows() - viewport.getNumRows());
       viewport.shift(new_y, new_x);
+      this.origin = new Point(this.origin.x + dx, this.origin.y + dy);
+   }
+
+   public Point originPoint()
+   {
+      return this.origin;
    }
 
    private static int clamp(int v, int min, int max)

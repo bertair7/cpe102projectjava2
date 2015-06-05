@@ -8,7 +8,7 @@ public class Dragon
       int resource_limit, List<PImage> imgs)
    {
       super(name, position, rate, animation_rate, resource_limit,
-         0, Miner.class, imgs);
+         0, MinerNotFull.class, imgs);
    }
 
    protected Miner transform(WorldModel world)
@@ -17,10 +17,14 @@ public class Dragon
       {
          return this;
       }
-      else
+      else if(getResourceCount() == getResourceLimit())
       {
          this.remove(world);
          return null;
+      }
+      else
+      {
+         return this;
       }
    }
 
@@ -35,7 +39,6 @@ public class Dragon
       {
          setResourceCount(getResourceCount() + 1);
          miner.remove(world);
-         //put quake on point
          return true;
       }
       else
@@ -44,4 +47,5 @@ public class Dragon
          return false;
       }
    }
+
 }

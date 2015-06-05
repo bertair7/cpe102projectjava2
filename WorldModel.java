@@ -186,4 +186,50 @@ public class WorldModel
    {
       grid[pt.y][pt.x] = v;
    }
+
+      public boolean isMouseAreaOccupied(Point pt)
+   {
+      Point checkpt1 = new Point(pt.x-2, pt.y + 2);
+      Point checkpt2 = new Point(pt.x-1, pt.y + 2);
+      Point checkpt3 = new Point(pt.x, pt.y + 2);
+      Point checkpt4 = new Point(pt.x+1, pt.y + 2);
+      Point checkpt5 = new Point(pt.x+2, pt.y + 2);
+      Point checkpt6 = new Point(pt.x-2, pt.y + 1);
+      Point checkpt7 = new Point(pt.x-1, pt.y + 1);
+      Point checkpt8 = new Point(pt.x, pt.y + 1);
+      Point checkpt9 = new Point(pt.x+1, pt.y + 1);
+      Point checkpt10 = new Point(pt.x+2, pt.y + 1);
+      Point checkpt11 = new Point(pt.x-2, pt.y);
+      Point checkpt12 = new Point(pt.x-1, pt.y);
+      Point checkpt13 = new Point(pt.x+1, pt.y);
+      Point checkpt14 = new Point(pt.x+2, pt.y);
+      Point checkpt15 = new Point(pt.x-2, pt.y-1);
+      Point checkpt16 = new Point(pt.x-1, pt.y-1);
+      Point checkpt17 = new Point(pt.x, pt.y-1);
+      Point checkpt18 = new Point(pt.x+1, pt.y-1);
+      Point checkpt19 = new Point(pt.x+2, pt.y-1);
+      Point checkpt20 = new Point(pt.x-2, pt.y-2);
+      Point checkpt21 = new Point(pt.x-1, pt.y-2);
+      Point checkpt22 = new Point(pt.x, pt.y-2);
+      Point checkpt23 = new Point(pt.x+1, pt.y-2);
+      Point checkpt24 = new Point(pt.x+2, pt.y-2);
+      Point checkpt25 = pt;
+      
+      if(isOccupied(checkpt1) || isOccupied(checkpt2) || isOccupied(checkpt3) 
+         || isOccupied(checkpt4) || isOccupied(checkpt5) || 
+         isOccupied(checkpt6) || isOccupied(checkpt7) || isOccupied(checkpt8) 
+         || isOccupied(checkpt9) || isOccupied(checkpt10) || 
+         isOccupied(checkpt11) || isOccupied(checkpt12) || 
+         isOccupied(checkpt13) || isOccupied(checkpt14) || 
+         isOccupied(checkpt15) || isOccupied(checkpt16) || 
+         isOccupied(checkpt17) || isOccupied(checkpt18) || 
+         isOccupied(checkpt19) || isOccupied(checkpt20) || 
+         isOccupied(checkpt21) || isOccupied(checkpt22) || 
+         isOccupied(checkpt23) || isOccupied(checkpt24) || 
+         isOccupied(checkpt25))
+      {
+         return true;
+      }
+      return false; 
+   }
 }

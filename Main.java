@@ -100,19 +100,59 @@ public class Main extends PApplet
    }
 
    public final static String DRAGON_KEY = "dragon";
-   public final static int DRAGON_RATE = 2;
-   public final static int DRAGON_ANIMATION = 5;
+   public final static int DRAGON_RATE = 450;
+   public final static int DRAGON_ANIMATION = 70;
    public final static int DRAGON_RESOURCE_LIMIT = 3;
 
-   public void mousePressed(MouseEvent e)
+   public void mousePressed()
    {
-      int x = e.getX();
-      int y = e.getY();
+      int x = (mouseX / TILE_WIDTH) + view.originPoint().x;
+      int y = (mouseY / TILE_HEIGHT) + view.originPoint().y;
+      Point pt = new Point(x, y);
       long time = System.currentTimeMillis();
-      Actor dragon = new Dragon(DRAGON_KEY, new Point(x, y), DRAGON_RATE,  
-         DRAGON_ANIMATION, DRAGON_RESOURCE_LIMIT, imageStore.get(DRAGON_KEY));
-      world.addEntity(dragon);
-      dragon.schedule(world, DRAGON_RATE + time, imageStore);
+
+      Point ice_pt1 = new Point(pt.x-1, pt.y+1);
+      Point ice_pt2 = new Point(pt.x-1, pt.y);
+      Point ice_pt3 = new Point(pt.x-1, pt.y-1);
+      Point ice_pt4 = new Point(pt.x, pt.y-1);
+      Point ice_pt5 = new Point(pt.x+1, pt.y-1);
+      Point ice_pt6 = new Point(pt.x+1, pt.y);
+      Point ice_pt7 = new Point(pt.x+1, pt.y+1);
+      Point ice_pt8 = new Point(pt.x, pt.y-2);
+      Point ice_pt9 = new Point(pt.x-2, pt.y);
+      Point ice_pt10 = new Point(pt.x+2, pt.y);
+
+      if(!world.isMouseAreaOccupied(pt))
+      {
+         Actor dragon = new Dragon(DRAGON_KEY, pt, DRAGON_RATE,  
+            DRAGON_ANIMATION, DRAGON_RESOURCE_LIMIT, imageStore.get(DRAGON_KEY));
+         world.addEntity(dragon);
+         dragon.schedule(world, time, imageStore);
+
+         Obstacle ice1 = new Obstacle("ice", ice_pt1, imageStore.get("ice"));
+         Obstacle ice2 = new Obstacle("ice", ice_pt2, imageStore.get("ice"));
+         Obstacle ice3 = new Obstacle("ice", ice_pt3, imageStore.get("ice"));
+         Obstacle ice4 = new Obstacle("ice", ice_pt4, imageStore.get("ice"));
+         Obstacle ice5 = new Obstacle("ice", ice_pt5, imageStore.get("ice"));
+         Obstacle ice6 = new Obstacle("ice", ice_pt6, imageStore.get("ice"));
+         Obstacle ice7 = new Obstacle("ice", ice_pt7, imageStore.get("ice"));
+         Obstacle ice8 = new Obstacle("ice", ice_pt8, imageStore.get("ice"));
+         Obstacle ice9 = new Obstacle("ice", ice_pt9, imageStore.get("ice"));
+         Obstacle ice10 = new Obstacle("ice", ice_pt10, imageStore.get("ice"));
+
+
+         world.addEntity(ice1);
+         world.addEntity(ice2);
+         world.addEntity(ice3);
+         world.addEntity(ice4);
+         world.addEntity(ice5);
+         world.addEntity(ice6);
+         world.addEntity(ice7);
+         world.addEntity(ice8);
+         world.addEntity(ice9);
+         world.addEntity(ice10);
+      }
+
       redraw();
    }
 
@@ -184,7 +224,7 @@ public class Main extends PApplet
    private static final int OBSTACLE_COL = 2;
    private static final int OBSTACLE_ROW = 3;
 
-   private static final String ORE_KEY = "ore";
+   private static final String ORE_KEY = "ice";
    private static final int ORE_NUM_PROPERTIES = 5;
    private static final int ORE_NAME = 1;
    private static final int ORE_COL = 2;

@@ -50,14 +50,20 @@ public abstract class Miner
          WorldEntity target = world.findNearest(getPosition(), seeking);
 
          Actor newEntity = this;
-         if (move(world, target))
+         try
          {
-            newEntity = tryTransform(world);
+            if (move(world, target))
+            {
+               newEntity = tryTransform(world);
+            }
+
+            scheduleAction(world, newEntity, newEntity.createAction(world,
+                imageStore), ticks + newEntity.getRate());
+         }
+         catch(NullPointerException e)
+         {
          }
 
-         scheduleAction(world, newEntity,
-            newEntity.createAction(world, imageStore),
-            ticks + newEntity.getRate());
       };
       return action[0];
    }
